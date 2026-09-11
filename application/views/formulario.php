@@ -156,35 +156,28 @@
   <div class="tab-pane fade" id="medicina_nuclear-pane" role="tabpanel" aria-labelledby="medicina_nuclear" tabindex="0"><h1>Medicina nuclear</h1>
     <div class="row">
         <div class="col">
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="gamma_camara" id="gamma_camara" placeholder="Gamma Camara" onmousedown="AllowOnlyNumbers()" value="<?php if(!empty($gamma_camara)) { echo $gamma_camara; } ?>">
-                <label for="gamma_camara">Gamma Camara</label>
+            <div class="form-floating">
+                <select class="form-select" id="equipomn" name="equipomn">
+                    <?php
+                    echo '<option selected value="">Seleccione...</option>';
+                    foreach ($equiposmn as $equipomn) {
+                        echo '<option value="'.$equipomn->id.'">'.$equipomn->nombre.'</option>';
+                    }
+                    ?>
+                </select>
+                <label for="equipomn">Equipos Medicina Nuclear</label>
             </div>
         </div>
         <div class="col">
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="spect" id="spect" placeholder="Spect" onmousedown="AllowOnlyNumbers()" value="<?php if(!empty($spect)) { echo $spect; } ?>">
-                <label for="spect">Spect</label>
-            </div>
-        </div>
-        <div class="col">
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="pect" id="pect" placeholder="Pect" onmousedown="AllowOnlyNumbers()" value="<?php if(!empty($pect)) { echo $pect; } ?>">
-                <label for="pect">Pect</label>
+                <input type="text" class="form-control" name="cantidadmn" id="cantidadmn" placeholder="Cantidad">
+                <label for="Cantidad">Cantidad</label>
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row" id="detallemn">
         <div class="col">
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="cilintigrafo" id="cilintigrafo" placeholder="Cilintigrafo" onmousedown="AllowOnlyNumbers()" value="<?php if(!empty($cilintigrafo)) { echo $cilintigrafo; } ?>">
-                <label for="cilintigrafo">Cilintigrafo</label>
-            </div>
-        </div>
-        <div class="col">
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="equipo_portatil" id="equipo_portatil" placeholder="Equipo portatil" onmousedown="AllowOnlyNumbers()" value="<?php if(!empty($equipo_portatil)) { echo $equipo_portatil; } ?>">
-                <label for="equipo_portatil">Equipo portatil</label>
+            <div class="table-responsive">
             </div>
         </div>
     </div>
@@ -200,52 +193,31 @@
             <label class="form-check-label" for="actimetro2">No</label>
             </div>
         </div>
-        <div class="col">
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="tc99" id="tc99" placeholder="TC99" onmousedown="AllowOnlyNumbers()" value="<?php if(!empty($tc99)) { echo $tc99; } ?>">
-                <label for="tc99">TC99</label>
-            </div>
-        </div>
     </div>
     <div class="row">
         <div class="col">
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="i_131" id="i_131" placeholder="I-131" onmousedown="AllowOnlyNumbers()" value="<?php if(!empty($i_131)) { echo $i_131; } ?>">
-                <label for="i_131">I-131</label>
+            <div class="form-floating">
+                <select class="form-select" id="radiofarmaco" name="radiofarmaco">
+                    <?php
+                    echo '<option selected value="">Seleccione...</option>';
+                    foreach ($radiofarmacos as $radiofarmaco) {
+                        echo '<option value="'.$radiofarmaco->id.'">'.$radiofarmaco->nombre.'</option>';
+                    }
+                    ?>
+                </select>
+                <label for="radiofarmaco">Radio Farmacos</label>
             </div>
         </div>
         <div class="col">
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="ga67" id="ga67" placeholder="Ga67" onmousedown="AllowOnlyNumbers()" value="<?php if(!empty($ga67)) { echo $ga67; } ?>">
-                <label for="Ga67">Ga67</label>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="fr18" id="fr18" placeholder="Fr 18" onmousedown="AllowOnlyNumbers()" value="<?php if(!empty($fr18)) { echo $fr18; } ?>">
-                <label for="fr18">Fr 18</label>
-            </div>
-        </div>
-        <div class="col">
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="tl201" id="tl201" placeholder="Tl 201" onmousedown="AllowOnlyNumbers()" value="<?php if(!empty($tl201)) { echo $tl201; } ?>">
-                <label for="tl201">Tl 201</label>
+                <input type="text" class="form-control" name="cantidadradiofarmacos" id="cantidadradiofarmacos" placeholder="Cantidad">
+                <label for="Cantidad">Cantidad</label>
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row" id="detalleradiofarmacos">
         <div class="col">
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="i_125" id="i_125" placeholder="I-125" onmousedown="AllowOnlyNumbers()" value="<?php if(!empty($i_125)) { echo $i_125; } ?>">
-                <label for="i_125">I-125</label>
-            </div>
-        </div>
-        <div class="col">
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="i_131_capsula" id="i_131_capsula" placeholder="I-131 (Capsula)" onmousedown="AllowOnlyNumbers()" value="<?php if(!empty($i_131_capsula)) { echo $i_131_capsula; } ?>">
-                <label for="i_131_capsula">I-131 (Capsula)</label>
+            <div class="table-responsive">
             </div>
         </div>
     </div>
@@ -287,13 +259,13 @@
     <div class="row">
         <div class="col">
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="cont_superficial" id="cont_superficial" placeholder="Cont. Superficial" onmousedown="AllowOnlyNumbers()" value="<?php if(!empty($cont_superficial)) { echo $cont_superficial; } ?>">
+                <input type="text" class="form-control" name="cont_superficial" id="cont_superficial" placeholder="Cont. Superficial" value="<?php if(!empty($cont_superficial)) { echo $cont_superficial; } ?>">
                 <label for="cont_superficial">Cont. Superficial</label>
             </div>
         </div>
         <div class="col">
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="cont_interna" id="cont_interna" placeholder="Cont. Interna" onmousedown="AllowOnlyNumbers()" value="<?php if(!empty($cont_interna)) { echo $cont_interna; } ?>">
+                <input type="text" class="form-control" name="cont_interna" id="cont_interna" placeholder="Cont. Interna" value="<?php if(!empty($cont_interna)) { echo $cont_interna; } ?>">
                 <label for="cont_interna">Cont. Interna</label>
             </div>
         </div>
@@ -312,13 +284,13 @@
     <div class="row">
         <div class="col">
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="medicosmn" id="medicosmn" placeholder="Medicos" onmousedown="AllowOnlyNumbers()" value="<?php if(!empty($medicos)) { echo $medicos; } ?>">
+                <input type="text" class="form-control" name="medicosmn" id="medicosmn" placeholder="Medicos" value="<?php if(!empty($medicos)) { echo $medicos; } ?>">
                 <label for="medicosmn">Medicos</label>
             </div>
         </div>
         <div class="col">
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="fisicosmn" id="fisicosmn" placeholder="Fisicos" onmousedown="AllowOnlyNumbers()" value="<?php if(!empty($fisicos)) { echo $fisicos; } ?>">
+                <input type="text" class="form-control" name="fisicosmn" id="fisicosmn" placeholder="Fisicos" value="<?php if(!empty($fisicos)) { echo $fisicos; } ?>">
                 <label for="fisicosmn">Fisicos</label>
             </div>
         </div>
@@ -326,13 +298,13 @@
     <div class="row">
         <div class="col">
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="tecnicosmn" id="tecnicosmn" placeholder="Tecnicos" onmousedown="AllowOnlyNumbers()" value="<?php if(!empty($tecnicos)) { echo $tecnicos; } ?>">
+                <input type="text" class="form-control" name="tecnicosmn" id="tecnicosmn" placeholder="Tecnicos" value="<?php if(!empty($tecnicos)) { echo $tecnicos; } ?>">
                 <label for="tecnicosmn">Tecnicos</label>
             </div>
         </div>
         <div class="col">
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="otros" id="otros" placeholder="Otros" onmousedown="AllowOnlyNumbers()" value="<?php if(!empty($otros)) { echo $otros; } ?>">
+                <input type="text" class="form-control" name="otros" id="otros" placeholder="Otros" value="<?php if(!empty($otros)) { echo $otros; } ?>">
                 <label for="otros">Otros</label>
             </div>
         </div>
