@@ -167,6 +167,54 @@
                 </select>
                 <label for="equipomn">Equipos Medicina Nuclear</label>
             </div>
+            <p>
+               <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#AgregarEquipo" aria-expanded="false" aria-controls="AgregarEquipo">
+               Agregar nuevo equipo para seleccionar
+               </button>
+            </p>
+            <div style="min-height: 120px;">
+                <div class="collapse collapse-horizontal" id="AgregarEquipo">
+                    <div class="card card-body" style="width: 300px;">
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" name="nombre_equipo_mn" id="nombre_equipo_mn" placeholder="Nombre">
+                                    <label for="nombre_equipo_mn">Nombre</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" name="marca_equipo_mn" id="marca_equipo_mn" placeholder="Marca">
+                                    <label for="marca_equipo_mn">Marca</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" name="modelo_equipo_mn" id="modelo_equipo_mn" placeholder="Modelo">
+                                    <label for="modelo_equipo_mn">Modelo</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" name="serial_equipo_mn" id="serial_equipo_mn" placeholder="Serial">
+                                    <label for="serial_equipo_mn">Serial</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col text-center">
+                               <button class="btn btn-primary" type="button" id="guardar_equipo_mn">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col">
             <div class="form-floating mb-3">
@@ -175,9 +223,33 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col text-center">
+            <button class="btn btn-primary" type="button" id="save_equipo_mn">Agregar Detalle de Equipos</button>
+        </div>
+    </div>
     <div class="row" id="detallemn">
         <div class="col">
+            <h4>Equipos Medicina Nuclear</h4>
             <div class="table-responsive">
+                <table id="tabla_detallemn" class="table table-dark table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Opciones</th>
+                        </tr>
+                    </thead>
+                    <tboby>
+                        <tr>
+                            <td scope="col">#</td>
+                            <td scope="col">Nombre</td>
+                            <td scope="col">Cantidad</td>
+                            <td scope="col">Opciones</td>
+                        </tr>
+                    </tboby>
+                </table>
             </div>
         </div>
     </div>
@@ -207,6 +279,30 @@
                 </select>
                 <label for="radiofarmaco">Radio Farmacos</label>
             </div>
+            <p>
+               <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#AgregarRadiofarmaco" aria-expanded="false" aria-controls="AgregarRadiofarmaco">
+               Agregar nuevo radiofarmaco para seleccionar
+               </button>
+            </p>
+            <div style="min-height: 120px;">
+                <div class="collapse collapse-horizontal" id="AgregarRadiofarmaco">
+                    <div class="card card-body" style="width: 300px;">
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" name="nombre_radiofarmaco_mn" id="nombre_radiofarmaco_mn" placeholder="Nombre">
+                                    <label for="nombre_radiofarmaco_mn">Nombre</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col text-center">
+                               <button class="btn btn-primary" type="button" id="guardar_radiofarmaco_mn">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col">
             <div class="form-floating mb-3">
@@ -215,9 +311,33 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col text-center">
+            <button class="btn btn-primary" type="button" id="save_radiofarmaco_mn">Agregar Detalle de Radiofarmacos</button>
+        </div>
+    </div>
     <div class="row" id="detalleradiofarmacos">
         <div class="col">
+            <h4>Radiofarmacos</h4>
             <div class="table-responsive">
+                <table id="tabla_detalleradiofarmacos" class="table table-dark table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Opciones</th>
+                        </tr>
+                    </thead>
+                    <tboby>
+                        <tr>
+                            <td scope="col">#</td>
+                            <td scope="col">Nombre</td>
+                            <td scope="col">Cantidad</td>
+                            <td scope="col">Opciones</td>
+                        </tr>
+                    </tboby>
+                </table>
             </div>
         </div>
     </div>
