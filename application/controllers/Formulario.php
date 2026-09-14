@@ -532,8 +532,8 @@ class Formulario extends MY_Controller {
             'cantidad' => $cantidad,
             'idinstitucion' => $idinstitucion
         ];
-        $itemid=$this->Reporte_model->save_equipo_mn($datos,$idinstitucion);
-        $detalleequipos=$this->Reporte_model->load_detalleequipos_mn();
+        $itemid=$this->Reporte_model->save_equipo_mn($datos);
+        $detalleequipos=$this->Reporte_model->load_detalleequipos_mn($idinstitucion);
         $data['status'] = 'ok';
         $data['detalleequiposmn']=$detalleequipos;
         return $this->output->set_content_type('application/json')->set_status_header('200')->set_output(json_encode($data));
@@ -548,13 +548,13 @@ class Formulario extends MY_Controller {
             'cantidad' => $cantidad,
             'idinstitucion' => $idinstitucion
         ];
-        $itemid=$this->Reporte_model->save_radiofarmaco_mn($datos,$idinstitucion);
+        $itemid=$this->Reporte_model->save_radiofarmaco_mn($datos);
         $detalleradiofarmacos=$this->Reporte_model->load_detalleradiofarmacos_mn($idinstitucion);
         $data['status'] = 'ok';
         $data['detalleradiofarmacos']=$detalleradiofarmacos;
         return $this->output->set_content_type('application/json')->set_status_header('200')->set_output(json_encode($data));
     }
-    public function load_radiofarmacos_mn(){
+    public function load_detalle_radiofarmacos_mn(){
         $this->load->model('Reporte_model');
         $idinstitucion=$this->input->post('idinstitucion');
         $detalleradiofarmacos=$this->Reporte_model->load_detalleradiofarmacos_mn($idinstitucion);
@@ -565,7 +565,7 @@ class Formulario extends MY_Controller {
     public function load_detalle_equipos_mn(){
         $this->load->model('Reporte_model');
         $idinstitucion=$this->input->post('idinstitucion');
-        $detalleequiposmn=$this->Reporte_model->load_detalle_equipos_mn($idinstitucion);
+        $detalleequiposmn=$this->Reporte_model->load_detalleequipos_mn($idinstitucion);
         $data['status'] = 'ok';
         $data['detalleequiposmn']=$detalleequiposmn;
         return $this->output->set_content_type('application/json')->set_status_header('200')->set_output(json_encode($data));

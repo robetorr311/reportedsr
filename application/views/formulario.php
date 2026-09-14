@@ -179,7 +179,7 @@
                         </div>
                         <div class="row">
                             <div class="col text-center">
-                               <button class="btn btn-primary" type="button" id="guardar_equipo_mn">
+                               <button class="btn btn-primary" type="button" id="guardar_equipo_mn">Agregar Nuevo equipo para seleccionar</button>
                             </div>
                         </div>
                     </div>
@@ -211,8 +211,8 @@
                             <th scope="col">Opciones</th>
                         </tr>
                     </thead>
-                    <tboby class="body_detallemn">
-                        <tr>
+                    <tboby>
+                        <tr class="body_detallemn">
                             <td scope="col">#</td>
                             <td scope="col">Nombre</td>
                             <td scope="col">Cantidad</td>
@@ -293,8 +293,8 @@
                             <th scope="col">Opciones</th>
                         </tr>
                     </thead>
-                    <tboby class="body_detalleradiofarmacos">
-                        <tr>
+                    <tboby>
+                        <tr class="body_detalleradiofarmacos">
                             <td scope="col">#</td>
                             <td scope="col">Nombre</td>
                             <td scope="col">Cantidad</td>
@@ -770,56 +770,6 @@
         $("#detalleradiofarmacos").hide();
         loadRadioFaracosMN();
         loadDetalleEquiposMN();
-        $("#save_equipo_mn").on('click', function(){
-            let idequipo=$("#equipomn");
-            let idinstitucion=$("#idinstitucion").val();
-            let cantidad=$("#cantidadmn").val();
-            $.ajax({
-                url:  base_url + '/Formulario/save_equipo_mn',
-                async: false,
-                type: 'POST',
-                data: { 
-                    idequipo : idequipo,
-                    idinstitucion :idinstitucion,
-                    cantidad : cantidad
-                },
-                success: function(response) {
-                    detalleequiposmn=response.detalleequiposmn;
-                    let rowsdetalleequiposmn=$(".body_detallemn");
-                    rowsdetalleequiposmn.find('tr').remove();
-                    rowsdetalleequiposmn.append('<tr selected value="">Seleccione...</option>');
-                    $.each(detalleequiposmn, function(i, item) {
-                        rowsdetalleequiposmn.append('<tr><td scope="col">'+detalleequiposmn[i].id+'</td><td scope="col">'+detalleequiposmn[i].nombre+'</td><td scope="col">'+detalleequiposmn[i].cantidad+'</td><td scope="col">Opciones</td></tr>');
-                    });
-                    $("#detallemn").show();
-                }
-            });
-        });
-        $("#save_radiofarmaco_mn").on('click', function(){
-            let idequipo=$("#radiofarmaco");
-            let idinstitucion=$("#idinstitucion").val();
-            let cantidad=$("#cantidadradiofarmacos").val();
-            $.ajax({
-                url:  base_url + '/Formulario/save_radiofarmaco_mn',
-                async: false,
-                type: 'POST',
-                data: { 
-                    idequipo : idequipo,
-                    idinstitucion :idinstitucion,
-                    cantidad : cantidad
-                },
-                success: function(response) {
-                    detalleradiofarmacos=response.detalleradiofarmacos;
-                    let rowsdetalleradiofarmacos=$(".body_detalleradiofarmacos");
-                    rowsdetalleradiofarmacos.find('tr').remove();
-                    rowsdetalleradiofarmacos.append('<tr selected value="">Seleccione...</option>');
-                    $.each(detalleradiofarmacos, function(i, item) {
-                        rowsdetalleradiofarmacos.append('<tr><td scope="col">'+detalleradiofarmacos[i].id+'</td><td scope="col">'+detalleradiofarmacos[i].nombre+'</td><td scope="col">'+detalleradiofarmacos[i].cantidad+'</td><td scope="col">Opciones</td></tr>');
-                    });
-                    $("#detalleradiofarmacos").show();
-                }
-            });
-        });
 
         $("#guardar_equipo_mn").on('click', function(){
             let nombre_equipo_mn=$("#nombre_equipo_mn").val();
@@ -1393,11 +1343,9 @@
             },
             success: function(response) {
                     detalleequiposmn=response.detalleequiposmn;
-                    let rowsdetalleequiposmn=$(".body_detallemn");
-                    rowsdetalleequiposmn.find('tr').remove();
-                    rowsdetalleequiposmn.append('<tr selected value="">Seleccione...</option>');
+                    $("#tabla_detallemn tbody > tr").remove();
                     $.each(detalleequiposmn, function(i, item) {
-                        rowsdetalleequiposmn.append('<tr><td scope="col">'+detalleequiposmn[i].id+'</td><td scope="col">'+detalleequiposmn[i].nombre+'</td><td scope="col">'+detalleequiposmn[i].cantidad+'</td><td scope="col">Opciones</td></tr>');
+                        $("#tabla_detallemn tbody").append('<tr><td scope="col">'+detalleequiposmn[i].id+'</td><td scope="col">'+detalleequiposmn[i].equipo+'</td><td scope="col">'+detalleequiposmn[i].cantidad+'</td><td scope="col">Opciones</td></tr>');
                     });
                     if(detalleequiposmn.length >0){
                         $("#detallemn").show();  
@@ -1419,11 +1367,9 @@
                 },
                 success: function(response) {
                     detalleradiofarmacos=response.detalleradiofarmacos;
-                    let rowsdetalleradiofarmacos=$(".body_detalleradiofarmacos");
-                    rowsdetalleradiofarmacos.find('tr').remove();
-                    rowsdetalleradiofarmacos.append('<tr selected value="">Seleccione...</option>');
+                    $("#tabla_detalleradiofarmacos tbody > tr").remove();
                     $.each(detalleradiofarmacos, function(i, item) {
-                        rowsdetalleradiofarmacos.append('<tr><td scope="col">'+detalleradiofarmacos[i].id+'</td><td scope="col">'+detalleradiofarmacos[i].nombre+'</td><td scope="col">'+detalleradiofarmacos[i].cantidad+'</td><td scope="col">Opciones</td></tr>');
+                        $("#tabla_detalleradiofarmacos tbody").append('<tr><td scope="col">'+detalleradiofarmacos[i].id+'</td><td scope="col">'+detalleradiofarmacos[i].equipo+'</td><td scope="col">'+detalleradiofarmacos[i].cantidad+'</td><td scope="col">Opciones</td></tr>');
                     });
                     if(detalleradiofarmacos.length >0){
                         $("#detalleradiofarmacos").show();  
@@ -1434,6 +1380,62 @@
                 }
             });
     }
+        $("#save_equipo_mn").on('click', function(){
+            let idequipo=$("#equipomn").val();
+            let idinstitucion=$("#idinstitucion").val();
+            let cantidad=$("#cantidadmn").val();
+            $.ajax({
+                url:  base_url + '/Formulario/save_equipo_mn',
+                async: false,
+                type: 'POST',
+                data: { 
+                    idequipo : idequipo,
+                    idinstitucion :idinstitucion,
+                    cantidad : cantidad
+                },
+                success: function(response) {
+                    detalleequiposmn=response.detalleequiposmn;
+                    $("#tabla_detallemn tbody > tr").remove();
+                    $.each(detalleequiposmn, function(i, item) {
+                        $("#tabla_detallemn tbody").append('<tr><td scope="col">'+detalleequiposmn[i].id+'</td><td scope="col">'+detalleequiposmn[i].equipo+'</td><td scope="col">'+detalleequiposmn[i].cantidad+'</td><td scope="col">Opciones</td></tr>');
+                    });
+                    if(detalleequiposmn.length >0){
+                        $("#detallemn").show();  
+                    }
+                    else{
+                        $("#detallemn").hide(); 
+                    }
+                }
+            });
+        });
+        $("#save_radiofarmaco_mn").on('click', function(){
+            let idequipo=$("#radiofarmaco").val();
+            let idinstitucion=$("#idinstitucion").val();
+            let cantidad=$("#cantidadradiofarmacos").val();
+            $.ajax({
+                url:  base_url + '/Formulario/save_radiofarmaco_mn',
+                async: false,
+                type: 'POST',
+                data: { 
+                    idequipo : idequipo,
+                    idinstitucion :idinstitucion,
+                    cantidad : cantidad
+                },
+                success: function(response) {
+                    detalleradiofarmacos=response.detalleradiofarmacos;
+                    $("#tabla_detalleradiofarmacos tbody > tr").remove();
+                    $.each(detalleradiofarmacos, function(i, item) {
+                        $("#tabla_detalleradiofarmacos tbody").append('<tr><td scope="col">'+detalleradiofarmacos[i].id+'</td><td scope="col">'+detalleradiofarmacos[i].equipo+'</td><td scope="col">'+detalleradiofarmacos[i].cantidad+'</td><td scope="col">Opciones</td></tr>');
+                    });
+                    if(detalleradiofarmacos.length >0){
+                        $("#detalleradiofarmacos").show();  
+                    }
+                    else{
+                        $("#detalleradiofarmacos").hide(); 
+                    }
+                }
+            });
+        });
 
 
 

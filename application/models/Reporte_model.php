@@ -115,10 +115,10 @@ class Reporte_model extends CI_Model {
         $insert_id = $this->db->insert_id();
         return  $insert_id;
     }
-    public function load_detalle_equipos_mn($idinstitucion)
+    public function load_detalleequipos_mn($idinstitucion)
     {
         if (empty($salida)) { $salida=""; }
-        $query = $this->db->query("select reportedsr.detallemn.id as id, reportedsr.tipoequipo.nombre as equipo, reportedsr.tipoequipo.id as idequipo, reportedsr.detallemn.cantidad as cantidad from reportedsr.detallemn, reportedsr.tipoequipo where reportedsr.detallemn.idequipo=reportedsr.tipoequipo.id AND reportedsr.tipoequipo.hpadre=9 AND reportedsr.detallemn.idinstitucion=".$idinstitucion);
+        $query = $this->db->query("select reportedsr.detallemn.id as id, reportedsr.tipoequipo.nombre as equipo, reportedsr.tipoequipo.id as idequipo, reportedsr.detallemn.cantidad as cantidad from reportedsr.detallemn, reportedsr.tipoequipo where reportedsr.detallemn.idequipo=reportedsr.tipoequipo.id AND reportedsr.tipoequipo.hpadre=8 AND reportedsr.detallemn.idinstitucion=".$idinstitucion);
         $salida=$query->result();
         return $salida;
     }
