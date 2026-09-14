@@ -77,4 +77,56 @@ class Reporte_model extends CI_Model {
         $this->db->update('reportedsr.radioterapia', $data);
         return $id;
     }
+    public function load_equipos_mn()
+    {
+        if (empty($salida)) { $salida=""; }
+        $query = $this->db->query("select * from reportedsr.tipoequipo where hpadre=8");
+        $salida=$query->result();
+        return $salida;
+    }
+    public function load_radiofarmacos_mn()
+    {
+        if (empty($salida)) { $salida=""; }
+        $query = $this->db->query("select * from reportedsr.tipoequipo where hpadre=9");
+        $salida=$query->result();
+        return $salida;
+    }
+    public function guardar_equipo_mn($datos)
+    {
+        $this->db->insert('reportedsr.tipoequipo', $datos);
+        $insert_id = $this->db->insert_id();
+        return  $insert_id;
+    }
+    public function guardar_radiofarmaco_mn($datos)
+    {
+        $this->db->insert('reportedsr.tipoequipo', $datos);
+        $insert_id = $this->db->insert_id();
+        return  $insert_id;
+    }
+    public function save_equipo_mn($datos)
+    {
+        $this->db->insert('reportedsr.detallemn', $datos);
+        $insert_id = $this->db->insert_id();
+        return  $insert_id;
+    }
+    public function save_radiofarmaco_mn($datos)
+    {
+        $this->db->insert('reportedsr.detallemn', $datos);
+        $insert_id = $this->db->insert_id();
+        return  $insert_id;
+    }
+    public function load_detalle_equipos_mn($idinstitucion)
+    {
+        if (empty($salida)) { $salida=""; }
+        $query = $this->db->query("select reportedsr.detallemn.id as id, reportedsr.tipoequipo.nombre as equipo, reportedsr.tipoequipo.id as idequipo, reportedsr.detallemn.cantidad as cantidad from reportedsr.detallemn, reportedsr.tipoequipo where reportedsr.detallemn.idequipo=reportedsr.tipoequipo.id AND reportedsr.tipoequipo.hpadre=9 AND reportedsr.detallemn.idinstitucion=".$idinstitucion);
+        $salida=$query->result();
+        return $salida;
+    }
+    public function load_detalleradiofarmacos_mn($idinstitucion)
+    {
+        if (empty($salida)) { $salida=""; }
+        $query = $this->db->query("select reportedsr.detallemn.id as id, reportedsr.tipoequipo.nombre as equipo, reportedsr.tipoequipo.id as idequipo, reportedsr.detallemn.cantidad as cantidad from reportedsr.detallemn, reportedsr.tipoequipo where reportedsr.detallemn.idequipo=reportedsr.tipoequipo.id AND reportedsr.tipoequipo.hpadre=9 AND reportedsr.detallemn.idinstitucion=".$idinstitucion);
+        $salida=$query->result();
+        return $salida;
+    }    
 }

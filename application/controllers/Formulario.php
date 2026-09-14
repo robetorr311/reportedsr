@@ -476,4 +476,98 @@ class Formulario extends MY_Controller {
         $data['idradioterapia']=$idradioterapia;
         return $this->output->set_content_type('application/json')->set_status_header('200')->set_output(json_encode($data));
     }
+    public function load_equipos_mn(){
+        $this->load->model('Reporte_model');
+        $idinstitucion=$this->input->post('idinstitucion');
+        $equiposmn=$this->Reporte_model->load_equipos_mn($idinstitucion);
+        $data['status'] = 'ok';
+        $data['equiposmn']=$equiposmn;
+        return $this->output->set_content_type('application/json')->set_status_header('200')->set_output(json_encode($data));
+    }
+    public function load_radiofarmacos_mn(){
+        $this->load->model('Reporte_model');
+        $idinstitucion=$this->input->post('idinstitucion');
+        $radiofarmacosmn=$this->Reporte_model->load_radiofarmacos_mn($idinstitucion);
+        $data['status'] = 'ok';
+        $data['radiofarmacosmn']=$radiofarmacosmn;
+        return $this->output->set_content_type('application/json')->set_status_header('200')->set_output(json_encode($data));
+    }
+    public function guardar_equipo_mn(){
+        $this->load->model('Reporte_model');
+        $nombre_equipo_mn=$this->input->post('nombre_equipo_mn');
+        $datos=[
+            'nombre' => $nombre_equipo_mn,
+            'hpadre' => 8
+        ];
+        $itemid=$this->Reporte_model->guardar_equipo_mn($datos);
+        $equiposmn=$this->Reporte_model->load_equipos_mn();
+        $data['status'] = 'ok';
+        $data['itemid']=$itemid;
+        $data['equiposmn']=$equiposmn;
+        return $this->output->set_content_type('application/json')->set_status_header('200')->set_output(json_encode($data));
+    }
+    public function guardar_radiofarmaco_mn(){
+        $this->load->model('Reporte_model');
+        $nombre_radiofarmaco_mn=$this->input->post('nombre_radiofarmaco_mn');
+        $datos=[
+            'nombre' => $nombre_radiofarmaco_mn,
+            'hpadre' => 9
+        ];
+        $itemid=$this->Reporte_model->guardar_radiofarmaco_mn($datos);
+        $radiofarmacosmn=$this->Reporte_model->load_radiofarmacos_mn();
+        $data['status'] = 'ok';
+        $data['itemid']=$itemid;
+        $data['radiofarmacosmn']=$radiofarmacosmn;
+        return $this->output->set_content_type('application/json')->set_status_header('200')->set_output(json_encode($data));
+    }
+
+
+    public function save_equipo_mn(){
+        $this->load->model('Reporte_model');
+        $idequipo=$this->input->post('idequipo');
+        $cantidad=$this->input->post('cantidad');
+        $idinstitucion=$this->input->post('idinstitucion');
+        $datos=[
+            'idequipo' => $idequipo,
+            'cantidad' => $cantidad,
+            'idinstitucion' => $idinstitucion
+        ];
+        $itemid=$this->Reporte_model->save_equipo_mn($datos,$idinstitucion);
+        $detalleequipos=$this->Reporte_model->load_detalleequipos_mn();
+        $data['status'] = 'ok';
+        $data['detalleequiposmn']=$detalleequipos;
+        return $this->output->set_content_type('application/json')->set_status_header('200')->set_output(json_encode($data));
+    }
+    public function save_radiofarmaco_mn(){
+        $this->load->model('Reporte_model');
+        $idequipo=$this->input->post('idequipo');
+        $cantidad=$this->input->post('cantidad');
+        $idinstitucion=$this->input->post('idinstitucion');
+        $datos=[
+            'idequipo' => $idequipo,
+            'cantidad' => $cantidad,
+            'idinstitucion' => $idinstitucion
+        ];
+        $itemid=$this->Reporte_model->save_radiofarmaco_mn($datos,$idinstitucion);
+        $detalleradiofarmacos=$this->Reporte_model->load_detalleradiofarmacos_mn($idinstitucion);
+        $data['status'] = 'ok';
+        $data['detalleradiofarmacos']=$detalleradiofarmacos;
+        return $this->output->set_content_type('application/json')->set_status_header('200')->set_output(json_encode($data));
+    }
+    public function load_radiofarmacos_mn(){
+        $this->load->model('Reporte_model');
+        $idinstitucion=$this->input->post('idinstitucion');
+        $detalleradiofarmacos=$this->Reporte_model->load_detalleradiofarmacos_mn($idinstitucion);
+        $data['status'] = 'ok';
+        $data['detalleradiofarmacos']=$detalleradiofarmacos;
+        return $this->output->set_content_type('application/json')->set_status_header('200')->set_output(json_encode($data));
+    }
+    public function load_detalle_equipos_mn(){
+        $this->load->model('Reporte_model');
+        $idinstitucion=$this->input->post('idinstitucion');
+        $detalleequiposmn=$this->Reporte_model->load_detalle_equipos_mn($idinstitucion);
+        $data['status'] = 'ok';
+        $data['detalleequiposmn']=$detalleequiposmn;
+        return $this->output->set_content_type('application/json')->set_status_header('200')->set_output(json_encode($data));
+    }
 }
